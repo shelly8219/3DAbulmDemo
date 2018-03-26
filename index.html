@@ -1,0 +1,47 @@
+<!DOCTYPE html><!--声明html版本编写指令-->
+<html lang="en">
+<head>
+    <!--页面编码格式-->
+    <meta charset="UTF-8">
+    <title>3D旋转相册</title>
+    <link rel="stylesheet" href="common.css"/>
+
+</head>
+<body>
+    <div class="perspectice">
+      <div class="wrap">
+          <img src="images/1.jpeg" width="133px" height="200px">
+          <img src="images/2.jpeg" width="133px" height="200px">
+          <img src="images/3.jpeg" width="133px" height="200px">
+          <img src="images/4.jpeg" width="133px" height="200px">
+          <img src="images/5.jpeg" width="133px" height="200px">
+          <img src="images/6.jpeg" width="133px" height="200px">
+          <img src="images/7.jpeg" width="133px" height="200px">
+          <img src="images/8.jpeg" width="133px" height="200px">
+          <img src="images/9.jpeg" width="133px" height="200px">
+          <img src="images/10.jpeg" width="133px" height="200px">
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        window.onload=function(){//页面加载完毕之后再加载js
+            var oImg=document.getElementsByTagName("img");//通过标签获取元素结点
+            //旋转度数
+            var Deg=360/oImg.length;
+
+            //遍历 jquery forEach(数组方法)
+            //把oimg借用成array方法
+            Array.prototype.forEach.call(oImg,function(el,index){
+                //console.log(index);
+                el.style.transform="rotateY("+Deg*index+"deg) translateZ(350px)";
+                el.style.zIndex=-index;
+                //动画 延时
+                el.style.transition="transform 1s "+index*0.1+"s";
+
+            });
+        }
+
+
+    </script>
+</body>
+</html>
